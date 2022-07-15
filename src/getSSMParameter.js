@@ -1,19 +1,19 @@
 const AWS = require("aws-sdk");
 
-const getSSMParameter = async (aws_ssm_path) => {
+const getSSMParameter = async ({ ssmPath, region }) => {
   const ssmClient = new AWS.SSM({
     apiVersion: "2014-11-06",
-    region: "us-west-2",
+    region,
   });
 
-  const ssmParameters = await ssmClient
+  const ssmParameter = await ssmClient
     .getParameter({
-      Name: aws_ssm_path,
+      Name: ssmPath,
       WithDecryption: true,
     })
     .promise();
 
-  return ssmParameters.Parameter.Value;
+  return ssmParameter.Parameter.Value;
 };
 
 module.exports = { getSSMParameter };

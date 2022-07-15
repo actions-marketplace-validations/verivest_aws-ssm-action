@@ -6,8 +6,9 @@ const { getSSMParameter } = require("./getSSMParameter");
 async function run_action() {
   try {
     const ssmPath = actionsCore.getInput("ssm-path", { required: true });
+    const region = actionsCore.getInput("region", { required: true });
 
-    const paramValue = await getSSMParameter(ssmPath);
+    const paramValue = await getSSMParameter({ ssmPath, region });
     const parsedValue = dotenv.parse(paramValue);
     actionsCore.debug(`ParsedValue: ${JSON.stringify(parsedValue)}`);
 

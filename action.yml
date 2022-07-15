@@ -1,9 +1,17 @@
-name: Parse AWS SSM variable as .env format and load it to the github workflow environment variables
-description: Parse AWS SSM variable as .env format and load it to the github workflow environment variables
+name: Parse AWS SSM variable from .env format and load them to the github workflow as environment variables
+description: Parse AWS SSM variable from .env format and load them to the github workflow as environment variables
+
+author: "Verivest"
+branding:
+  icon: "lock"
+  color: "green"
 
 inputs:
   ssm-path:
     description: "AWS SSM path for parameter (eg. `/ssm/parameter`)"
+    required: true
+  region:
+    description: "AWS SSM region"
     required: true
 
 runs:

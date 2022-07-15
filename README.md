@@ -1,4 +1,4 @@
-# AWS SSM action
+# Verivest AWS SSM action
 
 Given an AWS SSM variable in the format of a `.env` file, this actions parses the `.env` variables and sets them as github workflow environment variables.
 
@@ -7,6 +7,7 @@ Given an AWS SSM variable in the format of a `.env` file, this actions parses th
 | Parameters | Required | Description                                      |
 | ---------- | -------- | ------------------------------------------------ |
 | `ssm-path` | true     | AWS SSM variable in the format of a `.env` file. |
+| `region`   | true     | AWS SSM region                                   |
 
 ## Example:
 
@@ -17,9 +18,10 @@ Given an AWS SSM variable in the format of a `.env` file, this actions parses th
     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     aws-region: ${{ secrets.AWS_SSM_REGION }}
 
-- uses: verivest/aws-ssm-action
+- uses: verivest/aws-ssm-action@v1
   with:
-    ssm-path: /env/${{github.event.inputs.environment}}/web
+    ssm-path: /path/to/your/var
+    region: us-west-2
 
-- run: echo "$YOUR_ENV_VAR"
+- run: echo 'Your .env vars can now all be accessed by "$YOUR_ENV_VAR_NAME"'
 ```
