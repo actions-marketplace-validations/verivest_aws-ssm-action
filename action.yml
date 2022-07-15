@@ -1,5 +1,5 @@
-name: "AWS SSM variable as .env to github action environment variables"
-description: "Load AWS SSM variable as .env to github action environment variables"
+name: Parse AWS SSM variable as .env format and load it to the github workflow environment variables
+description: Parse AWS SSM variable as .env format and load it to the github workflow environment variables
 
 inputs:
   ssm-path:
