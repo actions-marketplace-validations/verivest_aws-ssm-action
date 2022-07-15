@@ -1,0 +1,11 @@
+name: "AWS SSM variable as .env to github action environment variables"
+description: "Load AWS SSM variable as .env to github action environment variables"
+
+inputs:
+  ssm-path:
+    description: "AWS SSM path for parameter (eg. `/ssm/parameter`)"
+    required: true
+
+runs:
+  using: "node16"
+  main: "src/index.js"
